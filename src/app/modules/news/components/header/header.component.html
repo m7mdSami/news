@@ -1,0 +1,50 @@
+<header class="header p-2 bg-primary text-white">
+   <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+         <button class="btn btn-sm" type="button" (click)="openMenu()">
+            <svg-icon src="./assets/images/menu.svg" [svgStyle]="{ 'width.px': 35, 'fill': '#fff' }"></svg-icon>
+         </button>
+
+         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-auto">
+            <img class="px-4" src="./assets/images/logo/Link_logo_vertical_color_Light_RGB.png" alt="" srcset="" />
+         </a>
+
+         <div class="search d-flex rounded-2 {{ _openSearch ? 'open' : '' }}">
+            <input class="search-input form-control bg-transparent border-0" type="text" placeholder="Search" />
+            <button class="btn search-btn" (click)="openSearch()">
+               <svg-icon src="./assets/images/loupe.svg" [svgStyle]="{ 'width.px': 20, 'fill': '#fff' }"></svg-icon>
+            </button>
+         </div>
+
+         <div class="notification">
+            <div ngbDropdown class="d-inline-block">
+               <button class="btn notification-btn" id="dropdownForm1" ngbDropdownToggle>
+                  <svg-icon src="./assets/images/bell.svg" [svgStyle]="{ 'width.px': 20, 'height.px': 20, 'fill': '#fff' }"></svg-icon>
+               </button>
+               <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="dropdown-menu dropdown-menu-right">
+                  <ul class="list-group list-group-flush">
+                     <li class="list-group-item">
+                        <span class="fs-6 text-secondary">Recent Notifications</span>
+                     </li>
+                     <li class="list-group-item">You have an upcoming appointment today! <span class="text-info">Check-in Now</span></li>
+                     <li class="list-group-item">Rate your last service appointment</li>
+                     <li class="list-group-item">Your payment request has been approved</li>
+                     <li class="list-group-item text-info text-center">All Notifications</li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+         <button class="btn align-items-center d-flex">
+            <img class="user-image" src="./assets/images/profile.svg" alt="" srcset="" />
+            <span class="text-white mx-2">User Name</span>
+         </button>
+
+         <button class="btn">
+            <svg-icon src="./assets/images/settings.svg" [svgStyle]="{ 'width.px': 20, 'height.px': 20, 'fill': '#fff' }"></svg-icon>
+         </button>
+      </div>
+   </div>
+</header>
+
+<app-menu [open]="open"></app-menu>

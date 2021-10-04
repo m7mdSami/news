@@ -1,0 +1,50 @@
+$hover-color: #0dcaf0;
+
+.header {
+   position: sticky;
+   top: 0.1px;
+   z-index: 9;
+   .search {
+      &.open {
+         background-color: #565960;
+         width: 100%;
+         max-width: 350px;
+         .search-input {
+            display: block;
+         }
+      }
+      &-input {
+         display: none;
+      }
+      &-btn {
+         &:hover {
+            background-color: $hover-color;
+            border-color: $hover-color;
+         }
+      }
+   }
+   .notification {
+      &-btn {
+         &.dropdown-toggle {
+            &::after {
+               display: none !important;
+            }
+         }
+         &:hover {
+            background-color: $hover-color;
+            border-color: $hover-color;
+         }
+      }
+      .dropdown-menu {
+         &.dropdown-menu-right {
+            left: auto !important;
+            right: 0;
+            width: 300px;
+         }
+      }
+   }
+   .user-image {
+      width: 35px;
+      height: 35px;
+   }
+}

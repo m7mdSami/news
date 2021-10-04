@@ -1,0 +1,48 @@
+.slider {
+   height: 500px;
+   .home-slider {
+      height: 100%;
+      ::ng-deep {
+         .sr-only {
+            display: none;
+         }
+         .carousel-inner,
+         .carousel-item,
+         .picsum-img-wrapper {
+            height: 100%;
+         }
+         .picsum-img-wrapper {
+            background-image: url('/assets/images/slider/sliderXL.png');
+            background-position: left center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            &::after {
+               content: '';
+               display: block;
+               position: absolute;
+               top: 0;
+               left: 0;
+               z-index: 2;
+               width: 100%;
+               height: 100%;
+               background-color: #7575758f;
+            }
+         }
+         .carousel-control-prev,
+         .carousel-control-next {
+            z-index: 3;
+            span {
+               width: 30px;
+               background-color: #c7c7c7;
+               background-size: 60%;
+               border-radius: 3px;
+            }
+         }
+         .info {
+            position: relative;
+            z-index: 4;
+         }
+      }
+   }
+}

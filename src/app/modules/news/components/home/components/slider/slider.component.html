@@ -1,0 +1,13 @@
+<div class="slider">
+   <ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)" class="home-slider">
+      <ng-template ngbSlide *ngFor="let img of images; index as i">
+         <div class="picsum-img-wrapper d-flex align-items-center justify-content-center">
+            <div class="info text-center">
+               <h1 class="h1 text-light">Al Foundation</h1>
+               <p class="text-light">is focused on inspiring the next generation of kids Healthcare professionals.</p>
+               <button class="btn btn-info text-white">Donate Now</button>
+            </div>
+         </div>
+      </ng-template>
+   </ngb-carousel>
+</div>
