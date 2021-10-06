@@ -12,9 +12,11 @@ import { MenuComponent } from './components/header/components/menu/menu.componen
 import { LayoutComponent } from './components/layout/layout.component'
 import { SliderComponent } from './components/home/components/slider/slider.component'
 import { LatestNewsComponent } from './components/home/components/latest-news/latest-news.component'
+import { ArticleCardComponent } from './components/home/components/article-card/article-card.component'
+import { HelpComponent } from './components/home/components/help/help.component'
 
 @NgModule({
-   declarations: [HomeComponent, HeaderComponent, MenuComponent, LayoutComponent, SliderComponent, LatestNewsComponent],
+   declarations: [HomeComponent, HeaderComponent, MenuComponent, LayoutComponent, SliderComponent, LatestNewsComponent, ArticleCardComponent, HelpComponent],
    imports: [CommonModule, NewsRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), NgbModule]
 })
 export class NewsModule {}

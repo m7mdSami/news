@@ -1,0 +1,18 @@
+<div class="help py-5">
+   <div class="container">
+      <h1 class="h1 text-center text-light">How we have helped</h1>
+      <p class="text-center text-light fs-4 pb-5">See how Al Foundation have promoted change locally and to the world</p>
+      <div class="items my-5">
+         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 justify-content-center">
+            <div class="col d-flex justify-content-center align-items-center" *ngFor="let item of items">
+               <div class="item border border-4 d-flex flex-column justify-content-center align-items-center">
+                  <div class="d-flex flex-column text-center">
+                     <svg-icon [src]="item.icon" [svgStyle]="{ 'width.px': 35, 'height.px': 35, 'fill': '#fff' }"></svg-icon>
+                     <span class="text-light">{{ item.text }}</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

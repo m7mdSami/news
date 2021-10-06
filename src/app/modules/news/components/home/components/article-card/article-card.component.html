@@ -1,0 +1,24 @@
+<div class="card mb-2" *ngIf="categories">
+   <img [src]="article?.urlToImage" class="article-img card-img-top" [alt]="article.title" />
+   <div class="card-body">
+      <div class="icons d-flex justify-content-end">
+         <button class="btn btn-sm" type="button">
+            <svg-icon src="./assets/images/heart.svg" [svgStyle]="{ 'width.px': 25, 'fill': '#13BEFF' }"></svg-icon>
+         </button>
+         <button class="btn btn-sm" type="button">
+            <svg-icon src="./assets/images/share.svg" [svgStyle]="{ 'width.px': 25, 'fill': '#13BEFF' }"></svg-icon>
+         </button>
+      </div>
+      <h4 class="card-title">{{ article?.title }}</h4>
+      <div class="cartgories my-1">
+         <span class="badge bg-secondary p-1">
+            {{ categories[article?.sourceID] }}
+         </span>
+      </div>
+      <p class="card-text">{{ article?.content }}</p>
+      <div class="date d-flex align-items-center mt-5">
+         <svg-icon src="./assets/images/calendar.svg" [svgStyle]="{ 'width.px': 25, 'fill': '#13BEFF' }"></svg-icon>
+         <span class="mx-2">{{ article?.publishedAt | date }}</span>
+      </div>
+   </div>
+</div>
