@@ -2,23 +2,23 @@
    <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
          <button class="btn btn-sm" type="button" (click)="openMenu()">
-            <svg-icon src="./assets/images/menu.svg" [svgStyle]="{ 'width.px': 35, 'fill': '#fff' }"></svg-icon>
+            <svg-icon src="./assets/images/menu.svg" [svgStyle]="{ 'width.px': 30, 'fill': '#fff' }"></svg-icon>
          </button>
 
          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-auto">
-            <img class="px-4" src="./assets/images/logo/Link_logo_vertical_color_Light_RGB.png" alt="" srcset="" />
+            <img class="px-md-4 px-0" src="./assets/images/logo/Link_logo_vertical_color_Light_RGB.png" alt="" srcset="" />
          </a>
 
          <div class="search d-flex rounded-2 {{ _openSearch ? 'open' : '' }}">
             <input class="search-input form-control bg-transparent border-0" type="text" placeholder="Search" />
-            <button class="btn search-btn" (click)="openSearch()">
+            <button class="btn btn-sm search-btn" (click)="openSearch()">
                <svg-icon src="./assets/images/loupe.svg" [svgStyle]="{ 'width.px': 20, 'fill': '#fff' }"></svg-icon>
             </button>
          </div>
 
          <div class="notification">
             <div ngbDropdown class="d-inline-block">
-               <button class="btn notification-btn" id="dropdownForm1" ngbDropdownToggle>
+               <button class="btn btn-sm notification-btn" id="dropdownForm1" ngbDropdownToggle>
                   <svg-icon src="./assets/images/bell.svg" [svgStyle]="{ 'width.px': 20, 'height.px': 20, 'fill': '#fff' }"></svg-icon>
                </button>
                <div ngbDropdownMenu aria-labelledby="dropdownForm1" class="dropdown-menu dropdown-menu-right">
@@ -35,12 +35,12 @@
             </div>
          </div>
 
-         <button class="btn align-items-center d-flex">
+         <a href="#" class="btn btn-sm align-items-center d-flex">
             <img class="user-image" src="./assets/images/profile.svg" alt="" srcset="" />
             <span class="text-white mx-2">User Name</span>
-         </button>
+         </a>
 
-         <button class="btn">
+         <button class="btn btn-sm">
             <svg-icon src="./assets/images/settings.svg" [svgStyle]="{ 'width.px': 20, 'height.px': 20, 'fill': '#fff' }"></svg-icon>
          </button>
       </div>

@@ -23,6 +23,9 @@
             padding: 23% 0;
             width: 68%;
             transform: rotate(45deg);
+            &:hover {
+               background-color: #0dcaf0;
+            }
             & > * {
                transform: rotate(-45deg);
             }
