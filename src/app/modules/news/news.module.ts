@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http'
 import { AngularSvgIconModule } from 'angular-svg-icon'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { FormsModule } from '@angular/forms'
 
 import { NewsRoutingModule } from './news-routing.module'
 import { HomeComponent } from './components/home/home.component'
@@ -15,9 +16,21 @@ import { LatestNewsComponent } from './components/home/components/latest-news/la
 import { ArticleCardComponent } from './components/home/components/article-card/article-card.component'
 import { HelpComponent } from './components/home/components/help/help.component'
 import { FooterComponent } from './components/footer/footer.component'
+import { NewsListComponent } from './components/news-list/news-list.component'
 
 @NgModule({
-   declarations: [HomeComponent, HeaderComponent, MenuComponent, LayoutComponent, SliderComponent, LatestNewsComponent, ArticleCardComponent, HelpComponent, FooterComponent],
-   imports: [CommonModule, NewsRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), NgbModule]
+   declarations: [
+      HomeComponent,
+      HeaderComponent,
+      MenuComponent,
+      LayoutComponent,
+      SliderComponent,
+      LatestNewsComponent,
+      ArticleCardComponent,
+      HelpComponent,
+      FooterComponent,
+      NewsListComponent
+   ],
+   imports: [CommonModule, NewsRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), NgbModule, FormsModule]
 })
 export class NewsModule {}

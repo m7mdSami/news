@@ -1,0 +1,21 @@
+.news-list {
+   .page-item {
+      &.active {
+         .page-link {
+            background-color: #0dcaf0;
+            border-color: #0dcaf0;
+         }
+      }
+   }
+   .sort {
+      &.dropdown-toggle {
+         &::after {
+            display: none !important;
+         }
+      }
+      &-list {
+         left: auto !important;
+         right: 0;
+      }
+   }
+}

@@ -1,0 +1,135 @@
+<div class="news-list py-4">
+   <div class="container">
+      <nav
+         style="
+            --bs-breadcrumb-divider: url(
+               &#34;data:image/svg + xml,
+               %3Csvgxmlns='http://www.w3.org/2000/svg'width='8'height='8'%3E%3Cpathd='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z'fill='currentColor'/%3E%3C/svg%3E&#34;
+            );
+         "
+         aria-label="breadcrumb"
+         aria-label="breadcrumb"
+      >
+         <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a [routerLink]="['/']" class="text-decoration-none text-info">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">news</li>
+         </ol>
+      </nav>
+      <div class="title mb-5">
+         <h1 class="h1">News</h1>
+      </div>
+      <div class="filter mb-5">
+         <form class="row form-inline">
+            <div class="col-2">
+               <div class="form-group">
+                  <label for="">From</label>
+                  <div class="input-group border">
+                     <input
+                        class="form-control border-0"
+                        placeholder="yyyy-mm-dd"
+                        name="dp"
+                        [(ngModel)]="from"
+                        ngbDatepicker
+                        #fromV
+                        #fromD="ngbDatepicker"
+                        (ngModelChange)="fiterByDate(fromV.value, toV.value)"
+                     />
+                     <div class="input-group-append">
+                        <button class="btn calendar" (click)="fromD.toggle()" type="button">
+                           <svg-icon src="./assets/images/calendar.svg" [svgStyle]="{ 'width.px': 35, 'height.px': 20, 'fill': '#0dcaf0' }"></svg-icon>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-2">
+               <div class="form-group">
+                  <label for="">To</label>
+                  <div class="input-group border">
+                     <input
+                        class="form-control border-0"
+                        placeholder="yyyy-mm-dd"
+                        name="dp"
+                        [(ngModel)]="to"
+                        ngbDatepicker
+                        #toV
+                        #toD="ngbDatepicker"
+                        (ngModelChange)="fiterByDate(fromV.value, toV.value)"
+                     />
+                     <div class="input-group-append">
+                        <button class="btn calendar" (click)="toD.toggle()" type="button">
+                           <svg-icon src="./assets/images/calendar.svg" [svgStyle]="{ 'width.px': 35, 'height.px': 20, 'fill': '#0dcaf0' }"></svg-icon>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-2">
+               <div class="form-group">
+                  <label for="">Category</label>
+                  <div class="input-group border">
+                     <select #categoryV class="form-select border-0" (change)="filterByCategory(categoryV.value)">
+                        <option selected disabled>select</option>
+                        <option *ngFor="let category of categoriesList" [value]="category[0]">{{ category[1] }}</option>
+                     </select>
+                  </div>
+               </div>
+            </div>
+            <div class="col-5">
+               <div class="d-flex align-items-end h-100 w-100">
+                  <div class="form-group w-100">
+                     <div class="input-group border">
+                        <input
+                           #searchV
+                           type="text"
+                           class="form-control bg-light border-0"
+                           placeholder="Search Services"
+                           aria-label="Search Services"
+                           aria-describedby="button-addon2"
+                        />
+                        <button class="btn btn-info text-white" type="button" id="" (click)="filterBySearch(searchV.value)">
+                           <svg-icon src="./assets/images/search.svg" [svgStyle]="{ 'width.px': 35, 'height.px': 20, 'fill': '#fff' }"></svg-icon>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-1">
+               <div class="d-flex align-items-end h-100 w-100">
+                  <div ngbDropdown class="d-inline-block">
+                     <button class="btn text-info sort" id="sort" ngbDropdownToggle>Sort By</button>
+                     <div ngbDropdownMenu aria-labelledby="sort" class="sort-list">
+                        <button ngbDropdownItem (click)="filterBySort(sort['a_to_z'])">{{ sort['a_to_z'] }}</button>
+                        <button ngbDropdownItem (click)="filterBySort(sort['z_to_a'])">{{ sort['z_to_a'] }}</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </form>
+      </div>
+      <div class="row">
+         <div class="col-lg-4 col-md-6" *ngFor="let article of articles">
+            <app-article-card [article]="article" [categories]="categories"></app-article-card>
+         </div>
+      </div>
+      <div class="mt-5 d-flex justify-content-center">
+         <nav aria-label="Page navigation example">
+            <ul class="pagination">
+               <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                     <span aria-hidden="true">&laquo;</span>
+                  </a>
+               </li>
+               <li class="page-item active"><a class="page-link" href="#">1</a></li>
+               <li class="page-item"><a class="page-link" href="#">2</a></li>
+               <li class="page-item"><a class="page-link" href="#">3</a></li>
+               <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                     <span aria-hidden="true">&raquo;</span>
+                  </a>
+               </li>
+            </ul>
+         </nav>
+      </div>
+   </div>
+</div>

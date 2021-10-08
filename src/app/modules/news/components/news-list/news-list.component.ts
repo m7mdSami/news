@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap'
 import { forkJoin, Observable, of, Subject } from 'rxjs'
 import { map, takeUntil } from 'rxjs/operators'
 import { APIs, Service } from 'src/app/services'
@@ -266,20 +267,29 @@ const CATEGORIES = {
    ]
 }
 
+export enum Sort {
+   a_to_z = `A to Z`,
+   z_to_a = `Z to A`
+}
+
 @Component({
-   selector: 'app-latest-news',
-   templateUrl: './latest-news.component.html',
-   styleUrls: ['./latest-news.component.scss']
+   selector: 'app-news-list',
+   templateUrl: './news-list.component.html',
+   styleUrls: ['./news-list.component.scss']
 })
-export class LatestNewsComponent implements OnInit, OnDestroy {
+export class NewsListComponent implements OnInit, OnDestroy {
    /** Subject that stops all hot observables */
    private _destroy$ = new Subject()
 
    articles?: any[]
+   backupArticles?: any[]
    categories?: { [x: number]: any }
 
    articles$: Observable<any> = of(NEWS)
    categories$: Observable<any> = of(CATEGORIES)
+
+   from?: NgbDateStruct
+   to?: NgbDateStruct
 
    constructor(private service: Service) {}
 
@@ -289,7 +299,7 @@ export class LatestNewsComponent implements OnInit, OnDestroy {
 
    getNews() {
       forkJoin([
-         this.articles$.pipe(map((e: any) => e.articles.filter((x: any) => x.showOnHomepage === true))),
+         this.articles$.pipe(map((e: any) => e.articles)),
          this.categories$.pipe(
             map((e: any) =>
                e.sourceCategory.reduce((acc: any, cur: any) => {
@@ -301,8 +311,56 @@ export class LatestNewsComponent implements OnInit, OnDestroy {
          .pipe(takeUntil(this._destroy$))
          .subscribe(([articles, categories]: any[]) => {
             this.articles = articles
+            this.backupArticles = articles
             this.categories = categories
          })
+   }
+
+   get categoriesList() {
+      return Object.entries(this.categories as {})
+   }
+
+   get sort() {
+      return Sort
+   }
+
+   fiterByDate(from: any, to: any) {
+      if (from && to) {
+         this.articles = this.backupArticles
+         let fromDate = new Date(from).getTime()
+         let toDate = new Date(to).getTime()
+         this.articles = this.articles?.filter((e) => {
+            let publishedAt = new Date(e.publishedAt).getTime()
+            if (fromDate >= publishedAt || toDate <= publishedAt) {
+               return e
+            }
+         })
+      }
+   }
+
+   filterByCategory(categoryId: string) {
+      this.articles = this.backupArticles
+      this.articles = this.articles?.filter((e) => e.sourceID == categoryId)
+   }
+
+   filterBySearch(val: any) {
+      const element = val.toLowerCase()
+      this.articles = this.backupArticles
+      this.articles = this.articles?.filter((e) => e.title.toLowerCase().includes(element))
+      if (element) {
+      }
+   }
+
+   filterBySort(sort: string) {
+      this.articles = this.backupArticles
+
+      if (sort === this.sort['a_to_z']) {
+         this.articles?.sort((a, z) => a.title.localeCompare(z.title))
+      }
+
+      if (sort === this.sort['z_to_a']) {
+         this.articles?.sort((a, z) => z.title.localeCompare(a.title))
+      }
    }
 
    ngOnDestroy() {

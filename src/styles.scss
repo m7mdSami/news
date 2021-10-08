@@ -4,3 +4,7 @@ $primary: #1b3495;
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+body {
+   overflow-x: hidden;
+}
