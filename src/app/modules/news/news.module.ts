@@ -17,6 +17,7 @@ import { ArticleCardComponent } from './components/home/components/article-card/
 import { HelpComponent } from './components/home/components/help/help.component'
 import { FooterComponent } from './components/footer/footer.component'
 import { NewsListComponent } from './components/news-list/news-list.component'
+import { NewsDetailsComponent } from './components/news-details/news-details.component'
 
 @NgModule({
    declarations: [
@@ -29,7 +30,8 @@ import { NewsListComponent } from './components/news-list/news-list.component'
       ArticleCardComponent,
       HelpComponent,
       FooterComponent,
-      NewsListComponent
+      NewsListComponent,
+      NewsDetailsComponent
    ],
    imports: [CommonModule, NewsRoutingModule, HttpClientModule, AngularSvgIconModule.forRoot(), NgbModule, FormsModule]
 })

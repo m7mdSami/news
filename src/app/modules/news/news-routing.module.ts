@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { HomeComponent } from './components/home/home.component'
 import { LayoutComponent } from './components/layout/layout.component'
+import { NewsDetailsComponent } from './components/news-details/news-details.component'
 import { NewsListComponent } from './components/news-list/news-list.component'
 
 const routes: Routes = [
@@ -14,8 +15,12 @@ const routes: Routes = [
             component: HomeComponent
          },
          {
-            path: 'news-list',
+            path: 'news',
             component: NewsListComponent
+         },
+         {
+            path: 'news/:id',
+            component: NewsDetailsComponent
          }
       ]
    }

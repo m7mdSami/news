@@ -289,8 +289,8 @@ export class LatestNewsComponent implements OnInit, OnDestroy {
 
    getNews() {
       forkJoin([
-         this.articles$.pipe(map((e: any) => e.articles.filter((x: any) => x.showOnHomepage === true))),
-         this.categories$.pipe(
+         this.service.get<any[]>(APIs().newsListing).pipe(map((e: any) => e.articles.filter((x: any) => x.showOnHomepage === true))),
+         this.service.get<any[]>(APIs().newsCategoryListing).pipe(
             map((e: any) =>
                e.sourceCategory.reduce((acc: any, cur: any) => {
                   return { ...acc, [cur.id]: cur.name }
